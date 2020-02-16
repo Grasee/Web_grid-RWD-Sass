@@ -1,3 +1,5 @@
+$bg-color: #F8F9FA;
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +19,7 @@
         width: 800px;
         text-align: center;
         margin: 0 auto;
+        color: #fff;
 
         h1 {
             font-size: 72px;
@@ -28,26 +31,15 @@
     }
 }
 
-//文案區
-
-.content {
-    max-width: 1200px;
-    display: grid;
-    margin: 0 auto;
-    grid-template-columns: 1fr 1fr;
-    
-}
-
-
 nav {
     display: grid;
-    grid-template-columns: auto 100px auto;
+    grid-template-columns: auto 80px auto;
     position: sticky;
     top: 0;
     height: 100px;
     text-align: center;
     align-items: center;
-    min-width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
 
    ul {
@@ -67,13 +59,188 @@ nav {
            }
        }
    }
-}
-
-img {
+   img {
     width: 80px;
     transition: 0.5s;
 
     &:hover {
         transform: scaleX(1.2);
+      }
+   }
+}
+
+
+//文章區
+.content {
+    max-width: 1200px;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    padding: 30px;
+    grid-template-areas: 'pic text-area';
+    
+
+    .pic {
+        grid-area: pic;
     }
+    
+    .text-area {
+        grid-area: text-area;
+        display: grid;
+        align-items: center;
+
+        h2 {
+            padding: 20px 0;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        a {
+            border: 1px solid black;
+            color: black;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            transition: 0.8s;
+
+            &:hover {
+                background-color: black;
+                color: #fff;
+            }
+                     
+
+        }
+
+
+    }
+       
+}
+
+#content-1, #content-3 {
+    grid-template-areas: 'pic text-area';
+}
+
+#content-2 {
+    grid-template-areas: 'text-area pic';
+}
+
+#icon {
+    background-color: $bg-color;
+    
+    div {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        padding: 20px 0;
+
+        div {
+            display: block;
+            text-align: center;
+
+            img {
+                display: block;
+                width: 60px;
+            }
+            span {
+                display: block;
+                padding: 10px 0;
+                font-size: 12px;
+            }
+            &:hover img {
+                filter: invert(99%) sepia(23%) saturate(6577%) hue-rotate(165deg) brightness(82%) contrast(107%);
+            }
+            &:hover span {
+                color: #82B8D9;
+            }
+        
+        }
+    }
+}
+
+footer {
+    background-color:#999;
+    text-align: center;
+    
+    img {
+        padding: 20px;
+        
+    }
+    span {
+        color: $bg-color;
+    }  
+
+}
+
+//菜單
+#menu {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 10px;
+
+    img {
+        filter: invert(1);
+    }
+    &:active #menu-box {
+        right: 0;
+    }
+    &:hover #menu-box {
+        right: 0;
+    }
+
+    #menu-box {
+        position: absolute;
+        right: -500px;
+        top: 0;
+        width: 500px;
+        height: 100vh;
+        background-color: #fff;
+        transition: 0.5s;
+
+        ul {
+            list-style: none;
+            li {
+                padding: 30px;
+
+                a {
+                    color: #000;
+                    text-decoration: none;
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
+
+//手機
+@media screen and (min-width:768px) {
+    
+}
+
+//平板
+@media screen and (max-width:769px) {
+    nav {
+        grid-template-columns: auto;
+        ul {
+            display: none;
+        }
+        
+    }
+
+    #menu {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width:1025px) {
+
 }
